@@ -1,4 +1,4 @@
-- Can create instance of Checkout class
+x Can create instance of Checkout class
 - Can add item price
 - Can add item
 - Can calculate the current total
