@@ -3,3 +3,5 @@ class Checkout:
         pass
     def addItem(self, item):
         pass
+    def calculateTotal(self):
+        return 1
