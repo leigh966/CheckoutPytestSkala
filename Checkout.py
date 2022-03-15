@@ -12,6 +12,8 @@ class Checkout:
     def addItemPrice(self, item, price):
         self.prices[item] = price
     def addItem(self, item):
+        if item not in self.prices:
+            raise Exception("Bad Item")
         self.items.append(item)
 
     def countItems(self):
