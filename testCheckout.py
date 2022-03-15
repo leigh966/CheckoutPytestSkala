@@ -20,3 +20,9 @@ def test_CanCalculateCorrectTotal(checkout):
 
 def test_CanAddDiscountRule(checkout):
     checkout.addDiscount("a",3,2)
+
+def test_CanApplyDiscountRule(checkout):
+    checkout.addDiscount("a",3,2)
+    for number in range(0,3):
+        checkout.addItem("a")
+    assert checkout.calculateTotal() == 2
