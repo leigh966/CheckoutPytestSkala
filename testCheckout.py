@@ -21,7 +21,6 @@ def test_CanCalculateCorrectTotal(checkout):
 def test_CanAddDiscountRule(checkout):
     checkout.addDiscount("a",3,2)
 
-@pytest.mark.skip
 def test_CanApplyDiscountRule(checkout):
     checkout.addDiscount("a",3,2)
     for number in range(0,3):

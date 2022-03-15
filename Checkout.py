@@ -1,4 +1,9 @@
 class Checkout:
+    class Discount:
+        def __init__(self, itemName, numOfItems, price):
+            self.numOfItems = numOfItems
+            self.price = price
+            self.itemName = itemName
 
     def __init__(self):
         self.prices = {}
@@ -8,10 +13,32 @@ class Checkout:
         self.prices[item] = price
     def addItem(self, item):
         self.items.append(item)
-    def calculateTotal(self):
-        total = 0
+
+    def countItems(self):
+        count = {}
         for item in self.items:
-            total += self.prices[item]
+            if item in count:
+                count[item]+=1
+            else:
+                count[item]=1
+        return count
+
+    def calculateTotal(self):
+        count = self.countItems()
+        total = 0
+        for key in self.discounts:
+            discount = self.discounts[key]
+            if discount.itemName in count:
+                while count[discount.itemName] >= discount.numOfItems:
+                    count[discount.itemName] -= discount.numOfItems
+                    total += discount.price
+
+        for item in count:
+            total += self.prices[item] * count[item]
+
         return total
+
+
     def addDiscount(self, item, num, price):
-        self.discounts[item, num] = price
+        discount = self.Discount(item, num, price)
+        self.discounts[item] = discount
